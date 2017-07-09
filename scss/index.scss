@@ -53,7 +53,7 @@ a {
 $window: 2000px;
 $resolution: 250px;
 
-@media (min-width: 0) and (max-width: $resolution - 1px ) {
+@media (min-width: 0) {
   body {
     background-size: auto 100vh;
   }
@@ -70,18 +70,21 @@ $resolution: 250px;
 
 $slices: $window / $resolution;
 @for $i from 1 through $slices {
-  @media (min-width: $i * $resolution ) and (max-width: ($i + 1) * $resolution - 1px ) {
+  @media (min-width: $i * $resolution ) and (min-width: 400px) and (max-width: ($i + 1) * $resolution - 1px ) {
     body {
       background-position: min(-1200px + $i * $resolution * .7, 0) 0;
       background-size: auto auto;
     }
 
+    $hspacer: $i * 400px / $slices;
+    $vspacer: 50px + $i * 100px / $slices;
+
     .intro {
-      height: 150px + $i * $resolution / 7;
-      left: 10px + $i * ($resolution / 10);
+      bottom: $vspacer;
+      left: $hspacer;
       padding: $intro-padding + $i * $resolution / 20;
-      top: 10px + $i * $resolution / 15;
-      width: 150px + $i * $resolution / 7;
+      right: $hspacer;
+      top: $vspacer;
     }
   }
 }
