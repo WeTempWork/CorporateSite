@@ -12,6 +12,9 @@ $intro-padding: 40px;
 .intro {
   background-color: $black;
   color: lighten($brand-primary, 20%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   opacity: .7;
   padding: $intro-padding;
   position: absolute;
@@ -22,6 +25,7 @@ $intro-padding: 40px;
 
   h1 {
     border-bottom: 1px solid $yellow;
+    font-size: 3rem;
     margin: 0;
   }
 
@@ -30,12 +34,12 @@ $intro-padding: 40px;
   }
 }
 
+.tagline {
+  font-size: 1.2rem;
+}
+
 .contact {
-  bottom: 0;
   color: $white;
-  left: 0;
-  position: absolute;
-  width: 100%;
 
   a {
     color: inherit;
@@ -73,10 +77,11 @@ $slices: $window / $resolution;
     }
 
     .intro {
-      height: 150px + $i * $resolution / 10;
-      left: 10px + $i * $resolution / 10;
+      height: 150px + $i * $resolution / 5;
+      left: 10px + $i * ($resolution / 10) * 1.618;
+      padding: $intro-padding + $i * $resolution / 20;
       top: 10px + $i * $resolution / 10;
-      width: 150px + $i * $resolution / 10;
+      width: 150px + $i * $resolution / 5;
     }
   }
 }
