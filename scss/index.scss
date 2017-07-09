@@ -70,19 +70,19 @@ $resolution: 250px;
 
 $slices: $window / $resolution;
 @for $i from 1 through $slices {
-  @media (min-width: $i * $resolution ) and (min-width: 400px) and (max-width: ($i + 1) * $resolution - 1px ) {
+  @media (min-width: $i * $resolution ) and (max-width: ($i + 1) * $resolution - 1px ) {
     body {
       background-position: min(-1200px + $i * $resolution * .7, 0) 0;
       background-size: auto auto;
     }
 
-    $hspacer: $i * 400px / $slices;
+    $hspacer: 40px + 400px * ($i - 1) / $slices;
     $vspacer: 50px + $i * 100px / $slices;
 
     .intro {
       bottom: $vspacer;
       left: $hspacer;
-      padding: $intro-padding + $i * $resolution / 20;
+      padding: $intro-padding + ($i - 1) * $resolution / 20;
       right: $hspacer;
       top: $vspacer;
     }
