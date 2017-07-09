@@ -72,16 +72,16 @@ $slices: $window / $resolution;
 @for $i from 1 through $slices {
   @media (min-width: $i * $resolution ) and (max-width: ($i + 1) * $resolution - 1px ) {
     body {
-      background-position: -1200px + $i * $resolution * .7 0;
+      background-position: min(-1200px + $i * $resolution * .7, 0) 0;
       background-size: auto auto;
     }
 
     .intro {
-      height: 150px + $i * $resolution / 5;
-      left: 10px + $i * ($resolution / 10) * 1.618;
+      height: 150px + $i * $resolution / 7;
+      left: 10px + $i * ($resolution / 10);
       padding: $intro-padding + $i * $resolution / 20;
-      top: 10px + $i * $resolution / 10;
-      width: 150px + $i * $resolution / 5;
+      top: 10px + $i * $resolution / 15;
+      width: 150px + $i * $resolution / 7;
     }
   }
 }
