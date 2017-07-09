@@ -12,13 +12,13 @@ $intro-padding: 40px;
 .intro {
   background-color: $black;
   color: lighten($brand-primary, 20%);
-  height: 200px;
-  left: 10px;
   opacity: .7;
   padding: $intro-padding;
   position: absolute;
-  top: 10px;
-  width: 200px;
+
+  span {
+    display: inline-block;
+  }
 
   h1 {
     border-bottom: 1px solid $yellow;
@@ -42,53 +42,41 @@ $intro-padding: 40px;
   }
 }
 
-@include media-breakpoint-up(xs) {
-  body {
-    background-position: -700px 0;
-    background-size: auto 1000px;
-  }
-}
-
-@include media-breakpoint-up(sm) {
-  body {
-    background-position: -500px 0;
-    background-size: auto 1000px;
-
-    .intro {
-      left: 40px;
-      top: 40px;
-    }
-  }
-}
-
-@include media-breakpoint-up(md) {
-  body {
-    background-position: -400px 0;
-    background-size: auto 1000px;
-
-    .intro {
-      height: 300px;
-      left: 80px;
-      top: 60px;
-      width: 300px;
-    }
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  body {
-    background-position: -300px 0;
-    background-size: auto auto;
-  }
-}
-
-@include media-breakpoint-up(xl) {
-  body {
-    background-position: -100px 0;
-    background-size: auto auto;
-  }
-}
-
 a {
   text-decoration: none;
+}
+
+$window: 2000px;
+$resolution: 250px;
+
+@media (min-width: 0) and (max-width: $resolution - 1px ) {
+  body {
+    background-size: auto 100vh;
+  }
+
+  .intro {
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    padding-top: 10px;
+    right: 0;
+    top: 0;
+  }
+}
+
+$slices: $window / $resolution;
+@for $i from 1 through $slices {
+  @media (min-width: $i * $resolution ) and (max-width: ($i + 1) * $resolution - 1px ) {
+    body {
+      background-position: -1200px + $i * $resolution * .7 0;
+      background-size: auto auto;
+    }
+
+    .intro {
+      height: 150px + $i * $resolution / 10;
+      left: 10px + $i * $resolution / 10;
+      top: 10px + $i * $resolution / 10;
+      width: 150px + $i * $resolution / 10;
+    }
+  }
 }
